@@ -4,9 +4,11 @@ const app = express()
 const mongoose = require("mongoose")
 const postmodel = require("./schema")
 const port = 5000
+const cors = require("cors")
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.j0vkg.mongodb.net/App",
     {
