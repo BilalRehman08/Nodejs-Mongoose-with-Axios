@@ -25,8 +25,10 @@ function send() {
 function read() {
     axios.get(`http://localhost:5000/read`)
         .then(function (response) {
-            // handle success
+
+
             console.log(response);
+            const data = response
         })
         .catch(function (error) {
             // handle error
