@@ -1,4 +1,3 @@
-const BASE_URL = "https://localhost:5000"
 
 function send() {
     const title = document.getElementById("title").value
@@ -19,4 +18,19 @@ function send() {
             // handle error
             console.log(error);
         })
+
+}
+
+
+function read() {
+    axios.get(`http://localhost:5000/read`)
+        .then(function (response) {
+            // handle success
+            console.log(response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+
 }
