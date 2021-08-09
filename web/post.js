@@ -50,6 +50,33 @@ function singupp() {
 }
 
 
+function usersss() {
+    axios.get(`http://localhost:5000/users`)
+        .then(function (response) {
+            // console.log(response);
+            const data = response
+            var p = document.getElementById("post")
+            for (var i in data.data) {
+                var a = document.createElement("li")
+                a.innerHTML = `<div class="card" style="width: 18rem;">
+               
+                <div class="card-body">
+                <h5 class="card-title">Name: ${data.data[i].name}</h5>
+                <h5 class="card-title">Email: ${data.data[i].email}</h5>
+                  <p class="card-text">Password: ${data.data[i].password}</p>
+                  
+                </div>
+              </div>`
+                p.appendChild(a)
+            }
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+}
+
+
 
 
 
@@ -69,7 +96,6 @@ function read() {
                   
                 </div>
               </div>`
-
                 p.appendChild(a)
             }
         })
@@ -77,7 +103,6 @@ function read() {
             // handle error
             console.log(error);
         })
-
 }
 
 // var abc = [1, 2, 4, 5, 6];

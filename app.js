@@ -78,6 +78,23 @@ app.get("/read", (request, response) => {
 })
 
 
+app.get("/users", (request, response) => {
+    try {
+        signuppostmodel.find({}, (error, data) => {
+            if (error) {
+                throw error
+            } else {
+                console.log(data)
+                response.send(data);
+            }
+        })
+    } catch (error) {
+        response.send(error)
+    }
+})
+
+
+
 // Read all data of specific user
 app.get("/find", (request, response) => {
     try {
