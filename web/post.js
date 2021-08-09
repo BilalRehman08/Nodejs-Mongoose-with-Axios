@@ -34,34 +34,37 @@ function singupp() {
         email: email,
         password: password
     }
-    // console.log(obj)
+
 
 
     var realdata = {}
+    var currentuser = {}
     axios.get(`http://localhost:5000/users`)
         .then(function (response) {
             // console.log(response);
             realdata = response
-
-
             var flag = true
             for (var i in realdata.data) {
                 if (obj.email === realdata.data[i].email) {
-                    console.log("Already Exists")
+                    alert("Already Exists")
                     flag = false
                 }
             }
-
             if (flag) {
-                axios.post(`http://localhost:5000/signup`, obj)
-                    .then(function (response) {
-                        console.log(response);
-                        alert("Signup Successfully")
-                    })
-                    .catch(function (error) {
-                        // handle error
-                        console.log(error);
-                    })
+                if ((obj.name === "") || (obj.email === "") || (obj.password === "")) {
+                    alert("Fields can't be empty")
+                } else {
+                    axios.post(`http://localhost:5000/signup`, obj)
+                        .then(function (response) {
+                            currentuser = response
+                            console.log(response);
+                            alert("Signup Successfully")
+                        })
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        })
+                }
             }
 
         })
@@ -70,24 +73,6 @@ function singupp() {
             console.log(error);
         })
 
-
-
-
-    // for (var i in realdata.data) {
-    //     console.log(`Real data: ${realdata.data[i].name}`)
-    // }
-    // console.log("safs")
-
-
-    // axios.post(`http://localhost:5000/signup`, obj)
-    //     .then(function (response) {
-    //         console.log(response);
-    //         alert("Signup Successfully")
-    //     })
-    //     .catch(function (error) {
-    //         // handle error
-    //         console.log(error);
-    //     })
 
 }
 
