@@ -112,7 +112,10 @@ function loginnn() {
         })
         .catch(function (error) {
             // handle error
-            console.log(error);
+            if ((obj.email === "") && (obj.password === "")) {
+                alert("Fields can't be empty")
+            }
+            else { console.log(error); }
         })
 
 }
