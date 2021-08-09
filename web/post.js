@@ -34,18 +34,60 @@ function singupp() {
         email: email,
         password: password
     }
-    console.log(obj)
+    // console.log(obj)
 
 
-    axios.post(`http://localhost:5000/signup`, obj)
+    var realdata = {}
+    axios.get(`http://localhost:5000/users`)
         .then(function (response) {
-            console.log(response);
-            alert("Signup Successfully")
+            // console.log(response);
+            realdata = response
+
+
+            var flag = true
+            for (var i in realdata.data) {
+                if (obj.email === realdata.data[i].email) {
+                    console.log("Already Exists")
+                    flag = false
+                }
+            }
+
+            if (flag) {
+                axios.post(`http://localhost:5000/signup`, obj)
+                    .then(function (response) {
+                        console.log(response);
+                        alert("Signup Successfully")
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    })
+            }
+
         })
         .catch(function (error) {
             // handle error
             console.log(error);
         })
+
+
+
+
+    // for (var i in realdata.data) {
+    //     console.log(`Real data: ${realdata.data[i].name}`)
+    // }
+    // console.log("safs")
+
+
+    // axios.post(`http://localhost:5000/signup`, obj)
+    //     .then(function (response) {
+    //         console.log(response);
+    //         alert("Signup Successfully")
+    //     })
+    //     .catch(function (error) {
+    //         // handle error
+    //         console.log(error);
+    //     })
 
 }
 
