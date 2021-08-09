@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const postmodel = require("./schema")
 const port = 5000
 const cors = require("cors")
+const signuppostmodel = require("./schema")
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -35,6 +36,25 @@ app.post("/add", (request, response) => {
             }
         })
 
+    } catch (error) {
+        response.send(error)
+    }
+})
+
+
+
+app.post("/signup", (request, response) => {
+    try {
+        const body = request.body
+        signuppostmodel.create(body, (error, data) => {
+            if (error) {
+                throw error
+            } else {
+                response.send("Singup Successful")
+                console.log(data);
+
+            }
+        })
     } catch (error) {
         response.send(error)
     }

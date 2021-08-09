@@ -24,6 +24,35 @@ function send() {
 }
 
 
+function singupp() {
+    const name = document.getElementById("name").value
+    const email = document.getElementById("email").value
+    const password = document.getElementById("password").value
+
+    const obj = {
+        name: name,
+        email: email,
+        password: password
+    }
+    console.log(obj)
+
+
+    axios.post(`http://localhost:5000/signup`, obj)
+        .then(function (response) {
+            console.log(response);
+            alert("Signup Successfully")
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+
+}
+
+
+
+
+
 function read() {
     axios.get(`http://localhost:5000/read`)
         .then(function (response) {
