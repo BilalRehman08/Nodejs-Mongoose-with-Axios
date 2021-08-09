@@ -59,6 +59,9 @@ function singupp() {
                             currentuser = response
                             console.log(response);
                             alert("Signup Successfully")
+                            setTimeout(() => {
+                                location.href = "login.html";
+                            }, 1000);
                         })
                         .catch(function (error) {
                             // handle error
@@ -78,6 +81,39 @@ function singupp() {
 
 
 function loginnn() {
+    axios.get(`http://localhost:5000/users`)
+        .then(function (response) {
+            // console.log(response);
+            realdata = response
+            var flag = true
+            for (var i in realdata.data) {
+                if (obj.email === realdata.data[i].email) {
+                    alert("Already Exists")
+                    flag = false
+                }
+            }
+            if (flag) {
+                if ((obj.name === "") || (obj.email === "") || (obj.password === "")) {
+                    alert("Fields can't be empty")
+                } else {
+                    axios.post(`http://localhost:5000/signup`, obj)
+                        .then(function (response) {
+                            currentuser = response
+                            console.log(response);
+                            alert("Signup Successfully")
+                        })
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        })
+                }
+            }
+
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
 
 }
 
