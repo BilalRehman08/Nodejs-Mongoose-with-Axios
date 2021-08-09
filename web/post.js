@@ -1,4 +1,5 @@
-
+var currentusername = ''
+var currentuseremail = ''
 function send() {
     const title = document.getElementById("title").value
     const description = document.getElementById("description").value
@@ -98,6 +99,8 @@ function loginnn() {
             var flag = true
             for (var i in realdata.data) {
                 if ((obj.email === realdata.data[i].email) && (obj.password === realdata.data[i].password)) {
+                    currentusername = realdata.data[i].name
+                    currentuseremail = realdata.data[i].email
 
                     alert("Login Successful")
                     setTimeout(() => {
@@ -126,15 +129,22 @@ function loginnn() {
 
 
 function usersss() {
+    // var cu = document.getElementById("currentuser")
+    // var namee = document.createElement("h3")
+    // var emaill = document.createElement("h3")
+    // namee.innerHTML = currentusername
+    // emaill.innerHTML = currentuseremail
+    // cu.appendChild(namee)
+    // cu.appendChild(emaill)
     axios.get(`http://localhost:5000/users`)
         .then(function (response) {
             // console.log(response);
             const data = response
             var p = document.getElementById("post")
             for (var i in data.data) {
+
                 var a = document.createElement("li")
                 a.innerHTML = `<div class="card" style="width: 18rem;">
-               
                 <div class="card-body">
                 <h5 class="card-title">Name: ${data.data[i].name}</h5>
                 <h5 class="card-title">Email: ${data.data[i].email}</h5>
