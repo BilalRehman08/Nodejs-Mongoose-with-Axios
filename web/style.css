@@ -1,0 +1,27 @@
+li{
+    list-style: none;
+}
+div{
+  
+    margin: 20px;
+}
+
+button,input{
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+
+a{
+    color: white;   
+     margin-top: 20px;
+    margin-left: 20px;
+    border: 2px solid black;
+}
+
+.loginn{
+    margin: auto;
+    height: 300px;
+    width: 300px;
+background-color: brown;
+}

@@ -4,23 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
 <body onload="">
-    <label for="name"></label>
-    <label for="email"></label>
-    <label for="password"></label>
+    <div class="loginn">
+        <center>
+            <h1>Sign Up</h1>
+        </center>
+        <label for="name"></label>
+        <label for="email"></label>
+        <label for="password"></label>
 
-    <input type="text" id="name">
-    <input type="text" id="email">
-    <input type="text" id="password">
+        <input placeholder="Name" type="text" id="name">
+        <input placeholder="Email" type="text" id="email">
+        <input placeholder="Password" type="text" id="password">
+        <br>
+        <button onclick="singupp()">SignUp</button>
+        <br><br>
+        <a href="login.html">Already have an account??</a>
 
-    <button onclick="singupp()">SignUp</button>
-    <a href="login.html">Already have an account??</a>
-
-    <div id="post"></div>
+        <div id="post"></div>
+    </div>
 </body>
 <script src="post.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
