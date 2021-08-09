@@ -38,7 +38,7 @@ function singupp() {
 
 
     var realdata = {}
-    var currentuser = {}
+
     axios.get(`http://localhost:5000/users`)
         .then(function (response) {
             // console.log(response);
@@ -56,7 +56,7 @@ function singupp() {
                 } else {
                     axios.post(`http://localhost:5000/signup`, obj)
                         .then(function (response) {
-                            currentuser = response
+
                             console.log(response);
                             alert("Signup Successfully")
                             setTimeout(() => {
@@ -81,6 +81,7 @@ function singupp() {
 
 
 function loginnn() {
+
     axios.get(`http://localhost:5000/users`)
         .then(function (response) {
             // console.log(response);
@@ -97,6 +98,7 @@ function loginnn() {
             var flag = true
             for (var i in realdata.data) {
                 if ((obj.email === realdata.data[i].email) && (obj.password === realdata.data[i].password)) {
+
                     alert("Login Successful")
                     setTimeout(() => {
                         location.href = "home.html";
@@ -112,13 +114,15 @@ function loginnn() {
         })
         .catch(function (error) {
             // handle error
-            if ((obj.email === "") && (obj.password === "")) {
+            if ((obj.email === "") || (obj.password === "")) {
                 alert("Fields can't be empty")
             }
-            else { alert(error); }
+            else { console.log(error); }
         })
 
 }
+
+
 
 
 function usersss() {
@@ -160,8 +164,9 @@ function read() {
             for (var i in data.data) {
                 var a = document.createElement("li")
                 a.innerHTML = `<div class="card" style="width: 18rem;">
-               
+                <img class="card-img-top" src="https://image.freepik.com/free-photo/panorama-aurora-borealis-with-milky-way-galaxy-snow-mountain-coastline_49071-212.jpg" alt="Card image cap">
                 <div class="card-body">
+                
                   <h5 class="card-title">${data.data[i].title}</h5>
                   <p class="card-text">${data.data[i].description}</p>
                   

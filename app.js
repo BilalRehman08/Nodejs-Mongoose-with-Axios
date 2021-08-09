@@ -2,10 +2,11 @@ const { response, request } = require("express")
 const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
-const postmodel = require("./schema")
+const postmodel = require("./postschema")
 const port = 5000
 const cors = require("cors")
 const signuppostmodel = require("./schema")
+
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
