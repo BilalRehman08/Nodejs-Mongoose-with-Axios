@@ -161,7 +161,9 @@ function usersss() {
         })
 }
 
-
+function logout() {
+    location.href = "login.html";
+}
 
 
 
