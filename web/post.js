@@ -14,6 +14,7 @@ function send() {
     axios.post(`http://localhost:5000/add`, obj)
         .then(function (response) {
             console.log(response);
+            alert("Created Successfully")
         })
         .catch(function (error) {
             // handle error

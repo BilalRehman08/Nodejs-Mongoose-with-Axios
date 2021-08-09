@@ -31,6 +31,7 @@ app.post("/add", (request, response) => {
                 throw error
             } else {
                 response.send("Create Successfuly")
+
             }
         })
 
