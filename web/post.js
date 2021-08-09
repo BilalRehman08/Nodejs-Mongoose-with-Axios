@@ -84,29 +84,29 @@ function loginnn() {
     axios.get(`http://localhost:5000/users`)
         .then(function (response) {
             // console.log(response);
+
+            const email = document.getElementById("email").value
+            const password = document.getElementById("password").value
+
+            const obj = {
+
+                email: email,
+                password: password
+            }
             realdata = response
             var flag = true
             for (var i in realdata.data) {
-                if (obj.email === realdata.data[i].email) {
-                    alert("Already Exists")
+                if ((obj.email === realdata.data[i].email) && (obj.password === realdata.data[i].password)) {
+                    alert("Login Successful")
+                    setTimeout(() => {
+                        location.href = "home.html";
+                    }, 1000);
                     flag = false
                 }
             }
             if (flag) {
-                if ((obj.name === "") || (obj.email === "") || (obj.password === "")) {
-                    alert("Fields can't be empty")
-                } else {
-                    axios.post(`http://localhost:5000/signup`, obj)
-                        .then(function (response) {
-                            currentuser = response
-                            console.log(response);
-                            alert("Signup Successfully")
-                        })
-                        .catch(function (error) {
-                            // handle error
-                            console.log(error);
-                        })
-                }
+                alert("Wrong Credentials")
+
             }
 
         })
